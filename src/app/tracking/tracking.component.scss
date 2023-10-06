@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.tracking {
+  display: flex;
+  flex-direction: column;
+
+  .container {
+    display: flex;
+    flex-flow: wrap;
+    column-gap: 15px;
+
+    &-padrao {
+      height: 90px;
+    }
+
+    &-conteudo {
+      height: auto;
+    }
+
+    .etapas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .bullet {
+        width: 30px;
+        border-radius: 50%;
+        border-radius: 1px solid #007a47;
+        flex-basis: 30px;
+
+        &.inativo {
+          border: 1px dashed #706a66;
+        }
+
+        &.ativo-sem-marcacao {
+          border: 1px solid #007a47;
+        }
+
+        &.ativo-com-marcacao {
+          background-color: #007a47;
+        }
+      }
+
+      .line {
+        width: 1px;
+        border-left: 1px dashed #706a66;
+        flex-grow: 1;
+
+        &.inativa {
+          border-left: 1px dashed #706a66;
+        }
+
+        &.ativa {
+          border-left: 1px solid #007a47;
+        }
+      }
+    }
+
+    .etapa-atual {
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+  }
+}
