@@ -17,17 +17,11 @@
         </ng-container>
       </div>
       <div class="etapa-atual">
-        <p>{{ item.titulo }}</p>
-        <ng-container *ngIf="item.mostrarConteudo">
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-          <p>teste</p>
-        </ng-container>
+        <app-conteudo-etapa
+          [titulo]="item.titulo"
+          [subtitulo]="item.subtitulo"
+          [mostraConteudoVariavel]="item.mostrarConteudo"
+        ></app-conteudo-etapa>
       </div>
     </div>
   </ng-container>

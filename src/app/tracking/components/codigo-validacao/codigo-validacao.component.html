@@ -1,0 +1,35 @@
+<div class="codigo-validacao">
+  <p>código de validação</p>
+
+  <form class="form" [formGroup]="formCodigoValidacao">
+    <div class="codigo-conteudo">
+      <div class="largura">
+        <input type="text" formControlName="campo1" />
+      </div>
+      <div class="largura">
+        <input type="text" formControlName="campo2" />
+      </div>
+      <div class="largura">
+        <input type="text" formControlName="campo3" />
+      </div>
+      <div class="largura">
+        <input type="text" formControlName="campo4" />
+      </div>
+      <div class="largura">
+        <input type="text" formControlName="campo5" />
+      </div>
+      <div class="largura">
+        <input type="text" formControlName="campo6" />
+      </div>
+    </div>
+
+    <div class="button">
+      <button (click)="confirmarCodigo()">confirmar código</button>
+    </div>
+  </form>
+
+  <div class="links">
+    <a (click)="reenviarCodigo()">reenviar código</a>
+    <a (click)="editarEmail()">editar e-mail</a>
+  </div>
+</div>

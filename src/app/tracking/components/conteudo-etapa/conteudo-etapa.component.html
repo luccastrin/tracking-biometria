@@ -1,0 +1,20 @@
+<div class="conteudo-etapa">
+  <h1>{{ titulo }}</h1>
+
+  <ng-container *ngIf="mostraConteudoVariavel">
+    <div class="conteudo-adicional">
+      <h2>{{ subtitulo }}</h2>
+      <ng-container *ngIf="!codigoValidacao">
+        <app-dados-usuario
+          (enviarCodigoValidacao)="recebeCodigoValidacao()"
+        ></app-dados-usuario>
+      </ng-container>
+
+      <ng-container *ngIf="codigoValidacao">
+        <app-codigo-validacao
+          (enviaConfirmacaoCodigo)="recebeConfirmacaoCodigo()"
+        ></app-codigo-validacao>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

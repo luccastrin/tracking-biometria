@@ -35,24 +35,30 @@ export class TrackingComponent implements OnInit {
   trackingBiometria = [
     {
       titulo: 'Atualização de e-mail',
+      subtitulo:
+        'Para receber o código de validação, confirme o e-mail informado no cadastro ou atualize os dados',
       mostrarConteudo: true,
       mostrarTracejado: true,
       etapa: this.etapas.etapaEmAndamento,
     },
     {
       titulo: 'Atualização de celular',
+      subtitulo:
+        'Para receber o código de validação por SMS, confirme o celular informado no cadastro ou atualize os dados',
       mostrarConteudo: false,
       mostrarTracejado: true,
       etapa: this.etapas.etapaNaoIniciada,
     },
     {
       titulo: 'Cadastro de biometria Facial',
+      subtitulo: 'teste',
       mostrarConteudo: false,
       mostrarTracejado: true,
       etapa: this.etapas.etapaNaoIniciada,
     },
     {
       titulo: 'Validação dos dados',
+      subtitulo: 'teste',
       mostrarConteudo: false,
       mostrarTracejado: false,
       etapa: this.etapas.etapaNaoIniciada,
