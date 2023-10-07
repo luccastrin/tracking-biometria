@@ -21,10 +21,9 @@
       align-items: center;
 
       .bullet {
-        width: 30px;
+        width: 25px;
         border-radius: 50%;
-        border-radius: 1px solid #007a47;
-        flex-basis: 30px;
+        flex-basis: 25px;
 
         &.inativo {
           border: 1px dashed #706a66;
@@ -55,7 +54,7 @@
     }
 
     .etapa-atual {
-      margin-top: 5px;
+      margin-top: 3px;
       margin-bottom: 20px;
     }
   }

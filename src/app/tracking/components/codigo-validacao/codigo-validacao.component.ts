@@ -1,5 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-codigo-validacao',
@@ -9,6 +14,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CodigoValidacaoComponent implements OnInit {
   @Output() enviaConfirmacaoCodigo = new EventEmitter();
   formCodigoValidacao!: FormGroup;
+  codigoValidoMock = 123456; // retorno de uma api?
 
   constructor(private fb: FormBuilder) {}
 
@@ -17,14 +23,31 @@ export class CodigoValidacaoComponent implements OnInit {
   }
 
   criarFormulario() {
-    this.formCodigoValidacao = this.fb.group({
-      campo1: [null],
-      campo2: [null],
-      campo3: [null],
-      campo4: [null],
-      campo5: [null],
-      campo6: [null],
-    });
+    this.formCodigoValidacao = this.fb.group(
+      {
+        campo1: [null, [Validators.required, Validators.maxLength(1)]],
+        campo2: [null, [Validators.required, Validators.maxLength(1)]],
+        campo3: [null, [Validators.required, Validators.maxLength(1)]],
+        campo4: [null, [Validators.required, Validators.maxLength(1)]],
+        campo5: [null, [Validators.required, Validators.maxLength(1)]],
+        campo6: [null, [Validators.required, Validators.maxLength(1)]],
+      },
+      { validators: this.validaCodigoInvalido(this.codigoValidoMock) }
+    );
+  }
+
+  validaCodigoInvalido(codigoValido: number) {
+    return (groupControl: FormGroup): ValidationErrors | null => {
+      const codigoDigitado = Object.values(groupControl.value).join('');
+      if (+codigoDigitado !== codigoValido) {
+        return { codigoInvalido: true };
+      }
+      return null;
+    };
+  }
+
+  validacaoForm() {
+    return this.formCodigoValidacao.errors && this.formCodigoValidacao.touched;
   }
 
   confirmarCodigo() {
@@ -39,10 +62,4 @@ export class CodigoValidacaoComponent implements OnInit {
   editarEmail() {
     console.log('editarEmail');
   }
-}
-function output(): (
-  target: CodigoValidacaoComponent,
-  propertyKey: 'enviaCodigo'
-) => void {
-  throw new Error('Function not implemented.');
 }

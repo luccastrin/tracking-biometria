@@ -37,17 +37,17 @@ export class TrackingComponent implements OnInit {
       titulo: 'Atualização de e-mail',
       subtitulo:
         'Para receber o código de validação, confirme o e-mail informado no cadastro ou atualize os dados',
-      mostrarConteudo: true,
+      mostrarConteudo: false,
       mostrarTracejado: true,
-      etapa: this.etapas.etapaEmAndamento,
+      etapa: this.etapas.etapaConcluida,
     },
     {
       titulo: 'Atualização de celular',
       subtitulo:
         'Para receber o código de validação por SMS, confirme o celular informado no cadastro ou atualize os dados',
-      mostrarConteudo: false,
+      mostrarConteudo: true,
       mostrarTracejado: true,
-      etapa: this.etapas.etapaNaoIniciada,
+      etapa: this.etapas.etapaEmAndamento,
     },
     {
       titulo: 'Cadastro de biometria Facial',

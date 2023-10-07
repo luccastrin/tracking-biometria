@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./dados-usuario.component.scss'],
 })
 export class DadosUsuarioComponent implements OnInit {
-  @Output() enviarCodigoValidacao = new EventEmitter();
+  @Output() enviaCodigoValidacao = new EventEmitter();
 
   constructor() {}
 
@@ -18,6 +18,6 @@ export class DadosUsuarioComponent implements OnInit {
 
   enviarCodigo() {
     console.log('enviarCodigo');
-    this.enviarCodigoValidacao.emit();
+    this.enviaCodigoValidacao.emit();
   }
 }
