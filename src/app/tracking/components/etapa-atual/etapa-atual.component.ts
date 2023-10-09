@@ -1,20 +1,34 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { EtapaAtiva } from '../../models/tracking.model';
 
 @Component({
-  selector: 'app-codigo-validacao',
-  templateUrl: './codigo-validacao.component.html',
-  styleUrls: ['./codigo-validacao.component.scss'],
+  selector: 'app-etapa-atual',
+  templateUrl: './etapa-atual.component.html',
+  styleUrls: ['./etapa-atual.component.scss'],
 })
-export class CodigoValidacaoComponent implements OnInit {
+export class EtapaAtualComponent implements OnInit {
+  @Input() etapaAtiva!: number;
+  @Input() codigoValidacao!: boolean;
   @Output() enviaConfirmacaoCodigo = new EventEmitter();
   formCodigoValidacao!: FormGroup;
   codigoValidoMock = 123456; // retorno de uma api?
+
+  get etapaAtivaEmailCelular() {
+    return (
+      this.etapaAtiva === EtapaAtiva.email ||
+      this.etapaAtiva === EtapaAtiva.celular
+    );
+  }
+
+  get etapaAtivaBiometria() {
+    return this.etapaAtiva === EtapaAtiva.biometria;
+  }
 
   constructor(private fb: FormBuilder) {}
 
@@ -25,12 +39,12 @@ export class CodigoValidacaoComponent implements OnInit {
   criarFormulario() {
     this.formCodigoValidacao = this.fb.group(
       {
-        campo1: [null, [Validators.required, Validators.maxLength(1)]],
-        campo2: [null, [Validators.required, Validators.maxLength(1)]],
-        campo3: [null, [Validators.required, Validators.maxLength(1)]],
-        campo4: [null, [Validators.required, Validators.maxLength(1)]],
-        campo5: [null, [Validators.required, Validators.maxLength(1)]],
-        campo6: [null, [Validators.required, Validators.maxLength(1)]],
+        campo1: [null, Validators.required],
+        campo2: [null, Validators.required],
+        campo3: [null, Validators.required],
+        campo4: [null, Validators.required],
+        campo5: [null, Validators.required],
+        campo6: [null, Validators.required],
       },
       { validators: this.validaCodigoInvalido(this.codigoValidoMock) }
     );

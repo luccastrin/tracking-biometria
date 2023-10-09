@@ -1,0 +1,48 @@
+.etapa-atual {
+  .codigo-validacao {
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+
+    .form {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 10px;
+
+      .codigo-conteudo {
+        display: flex;
+        gap: 20px;
+
+        .largura {
+          width: 30px;
+
+          input {
+            width: 100%;
+            height: 30px;
+          }
+        }
+      }
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .biometria-facial {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .status {
+      font-size: 14px;
+      background-color: #a59c96;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  }
+}

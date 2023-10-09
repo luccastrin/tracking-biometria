@@ -6,9 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./conteudo-etapa.component.scss'],
 })
 export class ConteudoEtapaComponent implements OnInit {
-  @Input() etapa!: number;
   @Input() titulo!: string;
-  @Input() subtitulo!: string;
+  @Input() subtitulo!: string | null;
+  @Input() etapaAtiva!: number;
   @Input() mostraConteudoVariavel!: boolean;
   codigoValidacao = false;
 

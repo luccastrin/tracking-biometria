@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { EtapaAtiva } from '../../models/tracking.model';
 
 @Component({
   selector: 'app-dados-usuario',
@@ -6,7 +7,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./dados-usuario.component.scss'],
 })
 export class DadosUsuarioComponent implements OnInit {
+  @Input() etapaAtiva!: number;
+  @Input() codigoValidacao!: boolean;
   @Output() enviaCodigoValidacao = new EventEmitter();
+
+  get etapaAtivaEmailCelular() {
+    return (
+      this.etapaAtiva === EtapaAtiva.email ||
+      this.etapaAtiva === EtapaAtiva.celular
+    );
+  }
 
   constructor() {}
 

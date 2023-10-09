@@ -2,17 +2,17 @@
   <ng-container *ngFor="let item of trackingBiometria">
     <div
       class="container"
-      [ngClass]="adicionaAlturaPadrao(item.mostrarConteudo)"
+      [ngClass]="adicionaAlturaPadrao(item.mostraConteudoVariavel)"
     >
       <div class="etapas">
         <div
           class="bullet"
-          [ngClass]="alteraEstadoTracking(item.etapa.bullet)"
+          [ngClass]="alteraEstadoTracking(item.etapas.bullet)"
         ></div>
         <ng-container *ngIf="item.mostrarTracejado">
           <div
             class="line"
-            [ngClass]="alteraEstadoTracking(item.etapa.linha)"
+            [ngClass]="alteraEstadoTracking(item.etapas.linha)"
           ></div>
         </ng-container>
       </div>
@@ -20,7 +20,8 @@
         <app-conteudo-etapa
           [titulo]="item.titulo"
           [subtitulo]="item.subtitulo"
-          [mostraConteudoVariavel]="item.mostrarConteudo"
+          [etapaAtiva]="encontraEtapaAtiva()"
+          [mostraConteudoVariavel]="item.mostraConteudoVariavel"
         ></app-conteudo-etapa>
       </div>
     </div>

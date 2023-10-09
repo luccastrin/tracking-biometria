@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodigoValidacaoComponent } from './codigo-validacao.component';
+import { CodigoValidacaoComponent } from './etapa-atual.component';
 
 describe('CodigoValidacaoComponent', () => {
   let component: CodigoValidacaoComponent;
@@ -8,9 +8,8 @@ describe('CodigoValidacaoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CodigoValidacaoComponent ]
-    })
-    .compileComponents();
+      declarations: [CodigoValidacaoComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CodigoValidacaoComponent);
     component = fixture.componentInstance;

@@ -4,17 +4,17 @@
   <ng-container *ngIf="mostraConteudoVariavel">
     <div class="conteudo-adicional">
       <h2>{{ subtitulo }}</h2>
-      <ng-container *ngIf="!codigoValidacao">
-        <app-dados-usuario
-          (enviaCodigoValidacao)="recebeCodigoValidacao()"
-        ></app-dados-usuario>
-      </ng-container>
+      <app-dados-usuario
+        [etapaAtiva]="etapaAtiva"
+        [codigoValidacao]="codigoValidacao"
+        (enviaCodigoValidacao)="recebeCodigoValidacao()"
+      ></app-dados-usuario>
 
-      <ng-container *ngIf="codigoValidacao">
-        <app-codigo-validacao
-          (enviaConfirmacaoCodigo)="recebeConfirmacaoCodigo()"
-        ></app-codigo-validacao>
-      </ng-container>
+      <app-etapa-atual
+        [etapaAtiva]="etapaAtiva"
+        [codigoValidacao]="codigoValidacao"
+        (enviaConfirmacaoCodigo)="recebeConfirmacaoCodigo()"
+      ></app-etapa-atual>
     </div>
   </ng-container>
 </div>

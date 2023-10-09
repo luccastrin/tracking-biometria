@@ -1,15 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-enum Bullet {
-  inativo = 'inativo',
-  ativoSemMarcacao = 'ativo-sem-marcacao',
-  ativoComMarcacao = 'ativo-com-marcacao',
-}
-
-enum Linha {
-  inativa = 'inativa',
-  ativa = 'ativa',
-}
+import { Bullet, Linha, Tracking } from './models/tracking.model';
 
 @Component({
   selector: 'app-tracking',
@@ -32,42 +22,49 @@ export class TrackingComponent implements OnInit {
     },
   };
 
-  trackingBiometria = [
+  trackingBiometria: Tracking[] = [
     {
       titulo: 'Atualização de e-mail',
       subtitulo:
         'Para receber o código de validação, confirme o e-mail informado no cadastro ou atualize os dados',
-      mostrarConteudo: false,
+      mostraConteudoVariavel: true,
       mostrarTracejado: true,
-      etapa: this.etapas.etapaConcluida,
+      etapas: this.etapas.etapaEmAndamento,
     },
     {
       titulo: 'Atualização de celular',
       subtitulo:
         'Para receber o código de validação por SMS, confirme o celular informado no cadastro ou atualize os dados',
-      mostrarConteudo: true,
+      mostraConteudoVariavel: false,
       mostrarTracejado: true,
-      etapa: this.etapas.etapaEmAndamento,
+      etapas: this.etapas.etapaNaoIniciada,
     },
     {
       titulo: 'Cadastro de biometria Facial',
-      subtitulo: 'teste',
-      mostrarConteudo: false,
+      subtitulo:
+        'Acesse o link enviado por SMS para o número (XX) XXXXX XXXX para confirmar sua identidade por reconhecimento facial',
+      mostraConteudoVariavel: false,
       mostrarTracejado: true,
-      etapa: this.etapas.etapaNaoIniciada,
+      etapas: this.etapas.etapaNaoIniciada,
     },
     {
       titulo: 'Validação dos dados',
-      subtitulo: 'teste',
-      mostrarConteudo: false,
+      subtitulo: null,
+      mostraConteudoVariavel: false,
       mostrarTracejado: false,
-      etapa: this.etapas.etapaNaoIniciada,
+      etapas: this.etapas.etapaNaoIniciada,
     },
   ];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  encontraEtapaAtiva() {
+    return this.trackingBiometria.findIndex(
+      (etapa: Tracking) => etapa.mostraConteudoVariavel
+    );
+  }
 
   adicionaAlturaPadrao(conteudo: boolean) {
     return !conteudo ? 'container-padrao' : 'container-conteudo';
