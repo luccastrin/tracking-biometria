@@ -5,7 +5,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { EtapaAtiva } from '../../models/tracking.model';
+import { EtapaAtivaEnum } from '../../models/tracking.model';
 
 @Component({
   selector: 'app-etapa-atual',
@@ -21,13 +21,13 @@ export class EtapaAtualComponent implements OnInit {
 
   get etapaAtivaEmailCelular() {
     return (
-      this.etapaAtiva === EtapaAtiva.email ||
-      this.etapaAtiva === EtapaAtiva.celular
+      this.etapaAtiva === EtapaAtivaEnum.email ||
+      this.etapaAtiva === EtapaAtivaEnum.celular
     );
   }
 
   get etapaAtivaBiometria() {
-    return this.etapaAtiva === EtapaAtiva.biometria;
+    return this.etapaAtiva === EtapaAtivaEnum.biometria;
   }
 
   constructor(private fb: FormBuilder) {}
@@ -65,7 +65,6 @@ export class EtapaAtualComponent implements OnInit {
   }
 
   confirmarCodigo() {
-    console.log('confirmarCodigo');
     this.enviaConfirmacaoCodigo.emit();
   }
 

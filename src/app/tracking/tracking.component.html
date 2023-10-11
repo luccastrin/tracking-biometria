@@ -22,6 +22,7 @@
           [subtitulo]="item.subtitulo"
           [etapaAtiva]="encontraEtapaAtiva()"
           [mostraConteudoVariavel]="item.mostraConteudoVariavel"
+          (enviaConfirmacaoCodigo)="recebeConfirmacaoCodigo()"
         ></app-conteudo-etapa>
       </div>
     </div>

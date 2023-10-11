@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Bullet, Linha, Tracking } from './models/tracking.model';
+import { BulletEnum, LinhaEnum, ITracking } from './models/tracking.model';
 
 @Component({
   selector: 'app-tracking',
@@ -9,27 +9,27 @@ import { Bullet, Linha, Tracking } from './models/tracking.model';
 export class TrackingComponent implements OnInit {
   etapas = {
     etapaNaoIniciada: {
-      bullet: Bullet.inativo,
-      linha: Linha.inativa,
+      bullet: BulletEnum.inativo,
+      linha: LinhaEnum.inativa,
     },
     etapaEmAndamento: {
-      bullet: Bullet.ativoSemMarcacao,
-      linha: Linha.inativa,
+      bullet: BulletEnum.ativoSemMarcacao,
+      linha: LinhaEnum.inativa,
     },
     etapaConcluida: {
-      bullet: Bullet.ativoComMarcacao,
-      linha: Linha.ativa,
+      bullet: BulletEnum.ativoComMarcacao,
+      linha: LinhaEnum.ativa,
     },
   };
 
-  trackingBiometria: Tracking[] = [
+  trackingBiometria: ITracking[] = [
     {
       titulo: 'Atualização de e-mail',
       subtitulo:
         'Para receber o código de validação, confirme o e-mail informado no cadastro ou atualize os dados',
       mostraConteudoVariavel: true,
       mostrarTracejado: true,
-      etapas: this.etapas.etapaEmAndamento,
+      etapas: this.etapas.etapaConcluida,
     },
     {
       titulo: 'Atualização de celular',
@@ -62,7 +62,7 @@ export class TrackingComponent implements OnInit {
 
   encontraEtapaAtiva() {
     return this.trackingBiometria.findIndex(
-      (etapa: Tracking) => etapa.mostraConteudoVariavel
+      (etapa: ITracking) => etapa.mostraConteudoVariavel
     );
   }
 
@@ -72,5 +72,19 @@ export class TrackingComponent implements OnInit {
 
   alteraEstadoTracking(item: string) {
     return item;
+  }
+
+  recebeConfirmacaoCodigo() {
+    const posicao = this.trackingBiometria.findIndex(
+      (etapa: ITracking) => etapa.mostraConteudoVariavel
+    );
+    this.trackingBiometria.forEach(
+      (etapa: ITracking, _, tracking: ITracking[]) => {
+        tracking[posicao].mostraConteudoVariavel = false;
+        tracking[posicao].etapas = this.etapas.etapaConcluida;
+        tracking[posicao + 1].mostraConteudoVariavel = true;
+        tracking[posicao + 1].etapas = this.etapas.etapaConcluida;
+      }
+    );
   }
 }

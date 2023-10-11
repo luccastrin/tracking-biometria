@@ -1,28 +1,28 @@
-export interface Tracking {
+export interface ITracking {
   titulo: string;
   subtitulo: string | null;
   mostraConteudoVariavel: boolean;
   mostrarTracejado: boolean;
-  etapas: EtapaStatus;
+  etapas: IEtapaStatus;
 }
 
-export interface EtapaStatus {
-  bullet: Bullet;
-  linha: Linha;
+export interface IEtapaStatus {
+  bullet: BulletEnum;
+  linha: LinhaEnum;
 }
 
-export enum Bullet {
+export enum BulletEnum {
   inativo = 'inativo',
   ativoSemMarcacao = 'ativo-sem-marcacao',
   ativoComMarcacao = 'ativo-com-marcacao',
 }
 
-export enum Linha {
+export enum LinhaEnum {
   inativa = 'inativa',
   ativa = 'ativa',
 }
 
-export enum EtapaAtiva {
+export enum EtapaAtivaEnum {
   email = 0,
   celular = 1,
   biometria = 2,

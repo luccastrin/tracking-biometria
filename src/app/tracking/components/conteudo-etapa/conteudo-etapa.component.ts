@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-conteudo-etapa',
@@ -10,6 +10,7 @@ export class ConteudoEtapaComponent implements OnInit {
   @Input() subtitulo!: string | null;
   @Input() etapaAtiva!: number;
   @Input() mostraConteudoVariavel!: boolean;
+  @Output() enviaConfirmacaoCodigo = new EventEmitter();
   codigoValidacao = false;
 
   constructor() {}
@@ -20,5 +21,7 @@ export class ConteudoEtapaComponent implements OnInit {
     this.codigoValidacao = true;
   }
 
-  recebeConfirmacaoCodigo() {}
+  recebeConfirmacaoCodigo() {
+    this.enviaConfirmacaoCodigo.emit();
+  }
 }

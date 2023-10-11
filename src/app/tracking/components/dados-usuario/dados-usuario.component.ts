@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { EtapaAtiva } from '../../models/tracking.model';
+import { EtapaAtivaEnum } from '../../models/tracking.model';
 
 @Component({
   selector: 'app-dados-usuario',
@@ -13,8 +13,8 @@ export class DadosUsuarioComponent implements OnInit {
 
   get etapaAtivaEmailCelular() {
     return (
-      this.etapaAtiva === EtapaAtiva.email ||
-      this.etapaAtiva === EtapaAtiva.celular
+      this.etapaAtiva === EtapaAtivaEnum.email ||
+      this.etapaAtiva === EtapaAtivaEnum.celular
     );
   }
 
@@ -27,7 +27,7 @@ export class DadosUsuarioComponent implements OnInit {
   }
 
   enviarCodigo() {
-    console.log('enviarCodigo');
+    // console.log('enviarCodigo');
     this.enviaCodigoValidacao.emit();
   }
 }
