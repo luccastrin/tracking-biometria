@@ -78,13 +78,9 @@ export class TrackingComponent implements OnInit {
     const posicao = this.trackingBiometria.findIndex(
       (etapa: ITracking) => etapa.mostraConteudoVariavel
     );
-    this.trackingBiometria.forEach(
-      (etapa: ITracking, _, tracking: ITracking[]) => {
-        tracking[posicao].mostraConteudoVariavel = false;
-        tracking[posicao].etapas = this.etapas.etapaConcluida;
-        tracking[posicao + 1].mostraConteudoVariavel = true;
-        tracking[posicao + 1].etapas = this.etapas.etapaConcluida;
-      }
-    );
+    this.trackingBiometria[posicao].mostraConteudoVariavel = false;
+    this.trackingBiometria[posicao].etapas = this.etapas.etapaConcluida;
+    this.trackingBiometria[posicao + 1].mostraConteudoVariavel = true;
+    this.trackingBiometria[posicao + 1].etapas = this.etapas.etapaConcluida;
   }
 }
